@@ -4,7 +4,7 @@
 
 #+OPTIONS: num:nil toc:nil reveal_katex:t reveal_title_slide:auto
 #+REVEAL_TRANS: default
-#+REVEAL_ROOT: http://cdn.jsdelivr.net/reveal.js/2.5.0/
+#+REVEAL_ROOT: ..
 #+REVEAL_THEME: black
 #+REVEAL_MARGIN: 0.075
 #+REVEAL_MIN_SCALE: 0.3
@@ -45,8 +45,7 @@ title="The source repository"></iframe>
 - In 1901, Bertrand Russell uncovered a paradox in naive set theory.
 
 #+begin_quote
-\[ \text{Let } R := \{ S \vert \neg\left(S \in S\right) \}. \text{Then } \newline \left(R \in R\right) \iff \neg\left(R \in R\right) \]
-
+Let  $R := S \vert \neg\left(S \in S\right)$. Then $$\left(R \in R\right) \iff \neg\left(R \in R\right)$$
 #+end_quote
 
 - Russell then proposed an alternative foundation based on types, which
@@ -156,7 +155,7 @@ programming.
 - Verifying a proof in Type Theory is a special case of checking the
   type of a term.
 
---------------
+#+REVEAL: fragment
 
 An example of a type-inconsistent, but set-theoretically correct,
 statement in Set Theory:

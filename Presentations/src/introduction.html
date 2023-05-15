@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Type theory and interactive theorem provers</title>
+<meta name="author" content="Anand Rao Tadipatri"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../dist/reveal.css"/>
+
+<link rel="stylesheet" href="../dist/theme/black.css" id="theme"/>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Type theory and interactive theorem provers</h1><p class="subtitle">An introduction</p>
+<h2 class="author">Anand Rao Tadipatri</h2><p class="date">Created: 2023-05-15 Mon 15:30</p>
+</section>
+
+<section>
+<section id="slide-org2bc2b94">
+<h2 id="org2bc2b94">The source repository</h2>
+<iframe src="https://github.com/0art0/IISER-Pune-Type-Theory-Talks"
+height="600"
+width="970"
+title="The source repository"></iframe>
+
+</section>
+</section>
+<section>
+<section id="slide-history-of-type-theory">
+<h2 id="history-of-type-theory">History of Type Theory</h2>
+</section>
+<section id="slide-russells-theory-of-types">
+<h3 id="russells-theory-of-types">Russell&rsquo;s Theory of Types</h3>
+
+<div id="orgabbdbd4" class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Bertrand_Russell_1957.jpg/330px-Bertrand_Russell_1957.jpg" alt="330px-Bertrand_Russell_1957.jpg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Bertrand Russell</p>
+</div>
+
+</section>
+<section id="slide-russells-theory-of-types-1">
+<h3 id="russells-theory-of-types-1">Russell&rsquo;s Theory of Types</h3>
+<ul>
+<li>In 1901, Bertrand Russell uncovered a paradox in naive set theory.</li>
+
+</ul>
+
+<blockquote >
+<p>
+\[\text{Let } R := \{ S \vert \neg\left(S \in S\right) \}. \text{Then } \newline \left(R \in R\right) \iff \neg\left(R \in R\right)\]
+</p>
+</blockquote>
+
+<ul>
+<li>Russell then proposed an alternative foundation based on types, which
+was meant to avoid the paradoxes of self-reference.</li>
+
+</ul>
+
+</section>
+<section id="slide-churchs-lambda-calculus">
+<h3 id="churchs-lambda-calculus">Church&rsquo;s \(\lambda\)-calculus</h3>
+
+<div id="orgb45f0b4" class="figure">
+<p><img src="https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg" alt="Alonzo_Church.jpg" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Alonzo Church</p>
+</div>
+
+</section>
+<section id="slide-churchs-lambda-calculus-1">
+<h3 id="churchs-lambda-calculus-1">Church&rsquo;s \(\lambda\)-calculus</h3>
+<p>
+\[ \left(\lambda x . M \right) \left(\lambda y . N \right) \]
+</p>
+
+<ul>
+<li>In order to avoid the contradictions arising from the untyped
+\(\lambda\)-calculus, Church developed the theory of simply typed
+\(\lambda\)-calculus which places restrictions on term application.</li>
+
+</ul>
+
+</section>
+<section id="slide-churchs-simply-typed-lambda-calculus">
+<h3 id="churchs-simply-typed-lambda-calculus">Church&rsquo;s simply typed \(\lambda\)-calculus</h3>
+<p>
+In brief,
+</p>
+
+<ul>
+<li>If \(x\) is a term with type \(\sigma\) and \(e\) is a term with
+\(\tau\) that can be derived from \(x\), then the function
+\(\left( \lambda \left( x : \sigma \right) . \left( e \right) \right)\)
+has type \(\sigma \to \tau\).</li>
+
+<li>Furthermore, if \(f\) has type \(\sigma \to \tau\) and \(x\) has type
+\(\sigma\), then \(f \left(x\right)\) (the application of \(f\) to
+\(x\)), has type \(\tau\).</li>
+
+</ul>
+
+</section>
+<section id="slide-martin-löf-type-theory">
+<h3 id="martin-löf-type-theory">Martin-Löf Type Theory</h3>
+
+<div id="org3283e46" class="figure">
+<p><img src="https://www.ae-info.org/attach/User/Martin-L%C3%B6f_Per/Per_Martin-Lof_big.jpg" alt="Per_Martin-Lof_big.jpg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Per Martin-Löf</p>
+</div>
+
+</section>
+<section id="slide-martin-löf-type-theory-1">
+<h3 id="martin-löf-type-theory-1">Martin-Löf Type Theory</h3>
+<ul>
+<li>Unlike simply typed \(\lambda\)-calculus, Martin-Löf Type Theory
+allows types whose definition depends on a value.</li>
+
+<li>Because of its close connections with constructive/intuitionistic
+mathematics, it is also referred to as <i>Intuitionistic Type Theory</i>.</li>
+
+<li>Several modern programming languages and proof assistants implement
+versions of Martin-Löf Type Theory.</li>
+
+</ul>
+
+</section>
+<section id="slide-homotopy-type-theory">
+<h3 id="homotopy-type-theory">Homotopy Type Theory</h3>
+
+<div id="orgbf5c2cb" class="figure">
+<p><img src="https://www.math.ias.edu/vladimir/sites/math.ias.edu.vladimir/files/Voevodsky_Vladimir_color_AK_2.jpg" alt="Voevodsky_Vladimir_color_AK_2.jpg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Vladimir Voevodsky</p>
+</div>
+
+</section>
+<section id="slide-homotopy-type-theory-1">
+<h3 id="homotopy-type-theory-1">Homotopy Type Theory</h3>
+<ul>
+<li>Homotopy Type Theory (HoTT) is a topological interpretation of
+intuitionistic type theory, together with an additional axiom known as
+the <i>Univalence axiom</i>.</li>
+
+<li>This system turns out to be highly suitable for modelling topics in
+mathematics such as Category theory very naturally.</li>
+
+<li>Homotopy Type Theory is a very recent and active area of research, and
+has been implemented in several proof systems.</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-type-theory-basics">
+<h2 id="type-theory-basics">Type Theory basics</h2>
+</section>
+<section id="slide-what-is-a-type">
+<h3 id="what-is-a-type">What is a Type?</h3>
+<ul>
+<li>Informally, a type is a collection of objects having a similar
+structure.</li>
+
+</ul>
+
+<p>
+Types in Type Theory can also be thought of as data types in
+programming.
+</p>
+
+</section>
+<section id="slide-advantages-of-type-theory">
+<h3 id="advantages-of-type-theory">Advantages of Type Theory</h3>
+</section>
+<section id="slide-for-formal-theorem-proving">
+<h4 id="for-formal-theorem-proving">for formal theorem proving</h4>
+<ul>
+<li>Type Theory is a foundation for mathematics in which proofs of
+propositions can be expressed as certain terms <i>within</i> the system.</li>
+
+<li>The rigid system of types allows a computer to quickly detect logical
+errors and also infer and fill in missing information.</li>
+
+<li>Verifying a proof in Type Theory is a special case of checking the
+type of a term.</li>
+
+</ul>
+
+<hr />
+
+<p>
+An example of a type-inconsistent, but set-theoretically correct,
+statement in Set Theory:
+</p>
+
+<blockquote >
+<p>
+\(3\) is a topology on \(2\) .
+</p>
+</blockquote>
+
+<hr />
+
+<p>
+An example to illustrate the type-checking procedure:
+</p>
+
+<blockquote >
+<p>
+The expression
+</p>
+</blockquote>
+
+<p>
+\[(1 + 3)^9 + 17 * 4 + 1\]
+</p>
+
+<blockquote >
+<p>
+can be seen to have the type \(\mathbb{N}\), without evaluating the
+expression.
+</p>
+</blockquote>
+
+<p>
+A similar procedure can be used to check the types of other terms or
+even proofs.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-overview-of-type-theory">
+<h2 id="overview-of-type-theory">Overview of Type Theory</h2>
+</section>
+<section id="slide-terms-and-types">
+<h3 id="terms-and-types">Terms and Types</h3>
+<ul>
+<li>The expressions in the framework of Type Theory are called <i>terms</i>,
+and each term has an associated <i>type</i>.</li>
+
+<li>The expression &ldquo;\(x\) is a term with type \(T\)&rdquo; is written as
+\[ x : T \]</li>
+
+<li>For example, if \(\mathbb{N}\) represents the type of natural numbers,
+then \(0 : \mathbb{N}\) and \(5 \cdot 3 + 4 : \mathbb{N}\) .</li>
+
+</ul>
+
+<p>
+Demonstrate some more examples on LEAN.
+</p>
+
+</section>
+<section id="slide-universes">
+<h3 id="universes">Universes</h3>
+<ul>
+<li>Common types like \(\mathbb{N}\) have type <code>Type</code>.</li>
+
+<li><code>Type</code> has type <code>Type 1</code>, <code>Type 1</code> has type <code>Type 2</code>, and so on.</li>
+
+<li>This hierarchy is non-cumulative.</li>
+
+</ul>
+
+</section>
+<section id="slide-function-types">
+<h3 id="function-types">Function Types</h3>
+<p>
+Building new types from old ones.
+</p>
+
+<ul>
+<li>If \(\alpha\) and \(\beta\) are types, \(\alpha \to \beta\) denotes
+the type of all functions from \(\alpha\) to \(\beta\).</li>
+
+<li>If \(f : \alpha \to \beta\) is a function and \(a : \alpha\) is a
+term, then \(\left( f \left( a \right) \right) : \beta\) denotes the
+application of \(f\) to the argument \(a\), and has the type
+\(\beta\).</li>
+
+</ul>
+
+<hr />
+
+<ul>
+<li>Functions can be constructed through a process known as <i>abstraction</i>:
+if \(x : \alpha\) is a term and \(t : \beta\) is a term of that can be
+constructed by temporarily postulating \(x\), then <code>λ x =&gt; t</code> denotes
+the function of type \(\alpha \to \beta\) that maps input \(x\) to the
+corresponding value \(t\).</li>
+
+<li>Functions that take in multiple arguments can be defined in terms of
+single-argument functions through a technique known as <i>Currying</i>.</li>
+
+</ul>
+
+<p>
+Some examples of function constructions, along with demonstration of
+product types.
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orge4080ef" data-background="file:./.img/lean_logo2.svg">
+<h2 id="orge4080ef">Interactive Theorem Provers</h2>
+</section>
+<section id="slide-orgfd07c07">
+<h3 id="orgfd07c07">A rough definition</h3>
+<blockquote >
+<p>
+An interactive theorem prover is a kind of mathematical technology for constructing and verifying formal mathe
+matical proofs.
+</p>
+</blockquote>
+
+</section>
+<section id="slide-orgb0c5ba7">
+<h3 id="orgb0c5ba7">The major proof assistants</h3>
+<ul>
+<li>Isabelle</li>
+<li>PVS</li>
+<li>Coq</li>
+<li>Lean</li>
+<li>Agda</li>
+<li>Mizar</li>
+<li>Metamath</li>
+<li>HOL Light</li>
+
+</ul>
+
+</section>
+<section id="slide-orgf20872f">
+<h3 id="orgf20872f">Libraries of formal mathematics</h3>
+<ul>
+<li>Lean&rsquo;s <code>mathlib</code></li>
+<li>Isabelle&rsquo;s <code>Archive of Formal Proofs</code></li>
+<li>Coq&rsquo;s <code>Mathematical Components</code> library</li>
+<li>The <code>Mizar Mathematical Library</code></li>
+<li>The <code>Agda-UniMath</code> library</li>
+
+</ul>
+
+</section>
+<section id="slide-org663ef6e">
+<h3 id="org663ef6e">Notable formalisations</h3>
+<ul>
+<li>The Jordan curve theorem</li>
+<li>The Prime Number theorem</li>
+<li>The Kepler conjecture</li>
+<li>The Odd-order theorem</li>
+<li>The central theorem of condensed mathematics</li>
+<li>Sphere eversion</li>
+
+</ul>
+
+</section>
+<section id="slide-org7c83526">
+<h3 id="org7c83526"><code>mathlib</code></h3>
+<iframe src="https://leanprover-community.github.io/mathlib-overview.html"
+height="600"
+width="970"
+title="An overview of Lean's mathlib"></iframe>
+
+</section>
+</section>
+<section>
+<section id="slide-org51d1159">
+<h2 id="org51d1159">The benefits of formalisation</h2>
+<div class="outline-text-2" id="text-org51d1159">
+</div>
+</section>
+<section id="slide-org798b1d5">
+<h3 id="org798b1d5">Verification of mathematics</h3>
+<ul>
+<li>Small-scale and large-scale consistency</li>
+<li>Verification of <i>black-box</i> results</li>
+<li>Formalisation of results involving a large number of computer calculations</li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org8ad0825">
+<h2 id="org8ad0825">The future of interactive theorem provers</h2>
+<div class="outline-text-2" id="text-org8ad0825">
+</div>
+</section>
+<section id="slide-org97d17a7">
+<h3 id="org97d17a7">Exposition</h3>
+<p style="font-size:14px">
+An interactive document automatically generated from a formal proof by a tool of Patrick Massot and Kyle Miller.
+</p>
+
+<iframe
+allowtransparency="true"
+style="background-color: White;"
+src="https://www.imo.universite-paris-saclay.fr/~patrick.massot/Examples/ContinuousFrom.html"
+height="550"
+width="970"
+title="A tool for communicating formal mathematical proofs"></iframe>
+
+<aside class="notes">
+<p>
+A tool by Patrick Massot and Kyle Miller to convert Lean proofs into interactive documents that can be expanded and collapsed to any depth.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orgae93d2f">
+<h3 id="orgae93d2f">Exposition</h3>
+<p style="font-size:14px">
+The <code>Natural Number Game</code>, developed by Buzzard, Pedramfar, Eugster, Bentkamp, Massot.
+</p>
+
+<iframe
+allowtransparency="true"
+style="background-color: White;"
+src="https://adam.math.hhu.de/#/game/nng"
+height="550"
+width="970"
+title="The natural number game"></iframe>
+
+</section>
+<section id="slide-orgdb662a9">
+<h3 id="orgdb662a9">Visualisation</h3>
+<p style="font-size:14px">
+An interactive image generated automatically by the <code>ProofWidgets4</code> framework of Ayers, Nawrocki and Ebner.
+</p>
+
+<p>
+DEMO
+</p>
+
+</section>
+<section id="slide-orgdcc557f">
+<h3 id="orgdcc557f">AI Integration</h3>
+<p style="font-size:14px">
+<code>LeanAIde</code>, an automatic formalisation tool developed by S. Gadgil, A. R. Tadipatri, A. Agrawal, N. Goyal, A. Narayanan.
+</p>
+
+<img
+src="./.img/leanaide-translation.gif"
+alt="Automatic translation of natural language to Lean code"
+width="970"
+height="600"
+>
+
+<aside class="notes">
+<p>
+The strengths and weaknesses of interactive theorem provers and language models perfectly complement each other; interactive theorem provers are precise, while language models are creative.
+</p>
+
+<p>
+There is a tremendous potential for combining the two technologies.
+</p>
+
+<p>
+The gif demonstrates a tool for automatic translation of theorem statements from natural language to <code>Lean</code> code (developed by Dr. Siddhartha Gadgil and myself, in collaboration with others).
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orga613b76">
+<h3 id="orga613b76">Interactive theorem provers</h3>
+<blockquote >
+<p>
+Interactive theorem provers are tools that can help mathematicians to
+experiment, discover, create, automate, verify, communicate and understand mathematics.
+</p>
+</blockquote>
+
+<aside class="notes">
+<p>
+Interactive theorem provers hold great promise in changing the way mathematics is done. There are challenges in the way of adopting this technology, but addressing them may lead to great improvements in mathematical foundations and proof automation. Overall, interactive theorem provers point towards a future of fruitful mathematical collaborations between humans and computers.
+</p>
+
+</aside>
+
+</section>
+<section id="slide-orge149697">
+<h3 id="orge149697"><code>Lean</code></h3>
+<ul>
+<li class="fragment appear"><code>Lean</code> is an <i>interactive theorem prover and programming language</i> based on the foundation of <i>dependent type theory</i>.</li>
+<li class="fragment appear">It is being developed primarily by Leonardo de Moura and Sebastian Ullrich.</li>
+<li class="fragment appear"><code>Lean</code> has a large library of formal mathematics, known as <code>mathlib</code>.</li>
+<li class="fragment appear"><code>Lean4</code> is also designed to be a fast and general-purpose programming language.</li>
+<li class="fragment appear"><code>Lean</code> is common platform for programs and proofs, allowing them to be mixed in novel ways.</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="../dist/reveal.js"></script>
+<script src="../plugin/markdown/markdown.js"></script>
+<script src="../plugin/zoom/zoom.js"></script>
+<script src="../plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealMarkdown, RevealZoom, RevealNotes]
+});
+
+</script>
+</body>
+</html>
