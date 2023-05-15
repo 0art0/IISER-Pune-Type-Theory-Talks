@@ -12,3 +12,8 @@ require mathlib from git
 lean_lib TypeTheoryTalks {
   -- add configuration options here
 }
+
+@[default_target]
+lean_lib Demos {
+  -- add configuration options here
+}
