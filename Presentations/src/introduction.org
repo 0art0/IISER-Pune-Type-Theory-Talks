@@ -18,15 +18,6 @@ Instructions to export to =reveal.js=:
 - Select =R= for /reveal.js/
 #+end_comment
 
-* The source repository
-
-#+begin_export html
-<iframe src="https://github.com/0art0/IISER-Pune-Type-Theory-Talks"
-height="600"
-width="970"
-title="The source repository"></iframe>
-#+end_export
-
 * History of Type Theory
 :PROPERTIES:
 :CUSTOM_ID: history-of-type-theory
@@ -342,10 +333,14 @@ title="The natural number game"></iframe>
 <p style="font-size:14px">
 An interactive image generated automatically by the <code>ProofWidgets4</code> framework of Ayers, Nawrocki and Ebner.
 </p>
+
+<img
+src="./.img/infoview-sets.png"
+alt="A ProofWidgets4 visualisation of a Venn diagram"
+width="970"
+height="550"
+>
 #+end_export
-
-DEMO
-
 ** AI Integration
 
 #+begin_export html

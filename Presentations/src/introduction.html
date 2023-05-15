@@ -19,19 +19,9 @@
 <div class="reveal">
 <div class="slides">
 <section id="sec-title-slide"><h1 class="title">Type theory and interactive theorem provers</h1><p class="subtitle">An introduction</p>
-<h2 class="author">Anand Rao Tadipatri</h2><p class="date">Created: 2023-05-15 Mon 15:30</p>
+<h2 class="author">Anand Rao Tadipatri</h2><p class="date">Created: 2023-05-15 Mon 15:38</p>
 </section>
 
-<section>
-<section id="slide-org2bc2b94">
-<h2 id="org2bc2b94">The source repository</h2>
-<iframe src="https://github.com/0art0/IISER-Pune-Type-Theory-Talks"
-height="600"
-width="970"
-title="The source repository"></iframe>
-
-</section>
-</section>
 <section>
 <section id="slide-history-of-type-theory">
 <h2 id="history-of-type-theory">History of Type Theory</h2>
@@ -39,7 +29,7 @@ title="The source repository"></iframe>
 <section id="slide-russells-theory-of-types">
 <h3 id="russells-theory-of-types">Russell&rsquo;s Theory of Types</h3>
 
-<div id="orgabbdbd4" class="figure">
+<div id="org8296f69" class="figure">
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Bertrand_Russell_1957.jpg/330px-Bertrand_Russell_1957.jpg" alt="330px-Bertrand_Russell_1957.jpg" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Bertrand Russell</p>
@@ -55,7 +45,7 @@ title="The source repository"></iframe>
 
 <blockquote >
 <p>
-\[\text{Let } R := \{ S \vert \neg\left(S \in S\right) \}. \text{Then } \newline \left(R \in R\right) \iff \neg\left(R \in R\right)\]
+Let  \(R := S \vert \neg\left(S \in S\right)\). Then \[\left(R \in R\right) \iff \neg\left(R \in R\right)\]
 </p>
 </blockquote>
 
@@ -69,7 +59,7 @@ was meant to avoid the paradoxes of self-reference.</li>
 <section id="slide-churchs-lambda-calculus">
 <h3 id="churchs-lambda-calculus">Church&rsquo;s \(\lambda\)-calculus</h3>
 
-<div id="orgb45f0b4" class="figure">
+<div id="orgc8b2a02" class="figure">
 <p><img src="https://upload.wikimedia.org/wikipedia/en/a/a6/Alonzo_Church.jpg" alt="Alonzo_Church.jpg" />
 </p>
 <p><span class="figure-number">Figure 2: </span>Alonzo Church</p>
@@ -112,7 +102,7 @@ has type \(\sigma \to \tau\).</li>
 <section id="slide-martin-löf-type-theory">
 <h3 id="martin-löf-type-theory">Martin-Löf Type Theory</h3>
 
-<div id="org3283e46" class="figure">
+<div id="org938c3f6" class="figure">
 <p><img src="https://www.ae-info.org/attach/User/Martin-L%C3%B6f_Per/Per_Martin-Lof_big.jpg" alt="Per_Martin-Lof_big.jpg" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Per Martin-Löf</p>
@@ -137,7 +127,7 @@ versions of Martin-Löf Type Theory.</li>
 <section id="slide-homotopy-type-theory">
 <h3 id="homotopy-type-theory">Homotopy Type Theory</h3>
 
-<div id="orgbf5c2cb" class="figure">
+<div id="org5790893" class="figure">
 <p><img src="https://www.math.ias.edu/vladimir/sites/math.ias.edu.vladimir/files/Voevodsky_Vladimir_color_AK_2.jpg" alt="Voevodsky_Vladimir_color_AK_2.jpg" />
 </p>
 <p><span class="figure-number">Figure 1: </span>Vladimir Voevodsky</p>
@@ -196,7 +186,6 @@ type of a term.</li>
 
 </ul>
 
-<hr />
 
 <p>
 An example of a type-inconsistent, but set-theoretically correct,
@@ -314,11 +303,11 @@ product types.
 </section>
 </section>
 <section>
-<section id="slide-orge4080ef" data-background="file:./.img/lean_logo2.svg">
-<h2 id="orge4080ef">Interactive Theorem Provers</h2>
+<section id="slide-org06f5dbe" data-background="file:./.img/lean_logo2.svg">
+<h2 id="org06f5dbe">Interactive Theorem Provers</h2>
 </section>
-<section id="slide-orgfd07c07">
-<h3 id="orgfd07c07">A rough definition</h3>
+<section id="slide-org174a1d4">
+<h3 id="org174a1d4">A rough definition</h3>
 <blockquote >
 <p>
 An interactive theorem prover is a kind of mathematical technology for constructing and verifying formal mathe
@@ -327,8 +316,8 @@ matical proofs.
 </blockquote>
 
 </section>
-<section id="slide-orgb0c5ba7">
-<h3 id="orgb0c5ba7">The major proof assistants</h3>
+<section id="slide-org3ba2d00">
+<h3 id="org3ba2d00">The major proof assistants</h3>
 <ul>
 <li>Isabelle</li>
 <li>PVS</li>
@@ -342,8 +331,8 @@ matical proofs.
 </ul>
 
 </section>
-<section id="slide-orgf20872f">
-<h3 id="orgf20872f">Libraries of formal mathematics</h3>
+<section id="slide-org170e031">
+<h3 id="org170e031">Libraries of formal mathematics</h3>
 <ul>
 <li>Lean&rsquo;s <code>mathlib</code></li>
 <li>Isabelle&rsquo;s <code>Archive of Formal Proofs</code></li>
@@ -354,8 +343,8 @@ matical proofs.
 </ul>
 
 </section>
-<section id="slide-org663ef6e">
-<h3 id="org663ef6e">Notable formalisations</h3>
+<section id="slide-org4ad06b5">
+<h3 id="org4ad06b5">Notable formalisations</h3>
 <ul>
 <li>The Jordan curve theorem</li>
 <li>The Prime Number theorem</li>
@@ -367,8 +356,8 @@ matical proofs.
 </ul>
 
 </section>
-<section id="slide-org7c83526">
-<h3 id="org7c83526"><code>mathlib</code></h3>
+<section id="slide-org9abee8c">
+<h3 id="org9abee8c"><code>mathlib</code></h3>
 <iframe src="https://leanprover-community.github.io/mathlib-overview.html"
 height="600"
 width="970"
@@ -377,13 +366,13 @@ title="An overview of Lean's mathlib"></iframe>
 </section>
 </section>
 <section>
-<section id="slide-org51d1159">
-<h2 id="org51d1159">The benefits of formalisation</h2>
-<div class="outline-text-2" id="text-org51d1159">
+<section id="slide-org089a159">
+<h2 id="org089a159">The benefits of formalisation</h2>
+<div class="outline-text-2" id="text-org089a159">
 </div>
 </section>
-<section id="slide-org798b1d5">
-<h3 id="org798b1d5">Verification of mathematics</h3>
+<section id="slide-orgf2781a3">
+<h3 id="orgf2781a3">Verification of mathematics</h3>
 <ul>
 <li>Small-scale and large-scale consistency</li>
 <li>Verification of <i>black-box</i> results</li>
@@ -394,13 +383,13 @@ title="An overview of Lean's mathlib"></iframe>
 </section>
 </section>
 <section>
-<section id="slide-org8ad0825">
-<h2 id="org8ad0825">The future of interactive theorem provers</h2>
-<div class="outline-text-2" id="text-org8ad0825">
+<section id="slide-org04c0ef0">
+<h2 id="org04c0ef0">The future of interactive theorem provers</h2>
+<div class="outline-text-2" id="text-org04c0ef0">
 </div>
 </section>
-<section id="slide-org97d17a7">
-<h3 id="org97d17a7">Exposition</h3>
+<section id="slide-orgf780a68">
+<h3 id="orgf780a68">Exposition</h3>
 <p style="font-size:14px">
 An interactive document automatically generated from a formal proof by a tool of Patrick Massot and Kyle Miller.
 </p>
@@ -421,8 +410,8 @@ A tool by Patrick Massot and Kyle Miller to convert Lean proofs into interactive
 </aside>
 
 </section>
-<section id="slide-orgae93d2f">
-<h3 id="orgae93d2f">Exposition</h3>
+<section id="slide-org1d09290">
+<h3 id="org1d09290">Exposition</h3>
 <p style="font-size:14px">
 The <code>Natural Number Game</code>, developed by Buzzard, Pedramfar, Eugster, Bentkamp, Massot.
 </p>
@@ -436,19 +425,21 @@ width="970"
 title="The natural number game"></iframe>
 
 </section>
-<section id="slide-orgdb662a9">
-<h3 id="orgdb662a9">Visualisation</h3>
+<section id="slide-orgd7bf94f">
+<h3 id="orgd7bf94f">Visualisation</h3>
 <p style="font-size:14px">
 An interactive image generated automatically by the <code>ProofWidgets4</code> framework of Ayers, Nawrocki and Ebner.
 </p>
 
-<p>
-DEMO
-</p>
-
+<img
+src="./.img/infoview-sets.png"
+alt="A ProofWidgets4 visualisation of a Venn diagram"
+width="970"
+height="550"
+>
 </section>
-<section id="slide-orgdcc557f">
-<h3 id="orgdcc557f">AI Integration</h3>
+<section id="slide-orga4a7966">
+<h3 id="orga4a7966">AI Integration</h3>
 <p style="font-size:14px">
 <code>LeanAIde</code>, an automatic formalisation tool developed by S. Gadgil, A. R. Tadipatri, A. Agrawal, N. Goyal, A. Narayanan.
 </p>
@@ -476,8 +467,8 @@ The gif demonstrates a tool for automatic translation of theorem statements from
 </aside>
 
 </section>
-<section id="slide-orga613b76">
-<h3 id="orga613b76">Interactive theorem provers</h3>
+<section id="slide-orgcd5a16d">
+<h3 id="orgcd5a16d">Interactive theorem provers</h3>
 <blockquote >
 <p>
 Interactive theorem provers are tools that can help mathematicians to
@@ -493,8 +484,8 @@ Interactive theorem provers hold great promise in changing the way mathematics i
 </aside>
 
 </section>
-<section id="slide-orge149697">
-<h3 id="orge149697"><code>Lean</code></h3>
+<section id="slide-org49b3975">
+<h3 id="org49b3975"><code>Lean</code></h3>
 <ul>
 <li class="fragment appear"><code>Lean</code> is an <i>interactive theorem prover and programming language</i> based on the foundation of <i>dependent type theory</i>.</li>
 <li class="fragment appear">It is being developed primarily by Leonardo de Moura and Sebastian Ullrich.</li>
