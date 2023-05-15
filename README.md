@@ -16,7 +16,7 @@ Next, run the following command from a terminal opened in a suitable folder (for
 git clone https://github.com/0art0/IISER-Pune-Type-Theory-Talks.git
 ```
 
-On other operating systems, the code can be downloaded as a `.zip` file from [this link](https://github.com/0art0/IISER-Pune-Type-Theory-Talks/archive/refs/heads/main.zip). 
+Note that this step requires [git](https://git-scm.com/) to be installed locally. On other operating systems, the code can be downloaded as a `.zip` file from [this link](https://github.com/0art0/IISER-Pune-Type-Theory-Talks/archive/refs/heads/main.zip). 
 
 To complete the set-up, go to the project folder (presumably called `IISER-Pune-Type-Theory-Talks`) and run the following command from a terminal:
 
@@ -27,6 +27,8 @@ lake exe cache get
 To finally experiment with the code, open the main directory of the project folder in the VS Code editor and click on any of the files in the `TypeTheoryTalks` sub-folder.
 
 ### Via GitPod
+
+To run the code via GitPod, just click on this link: [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/0art0/IISER-Pune-Type-Theory-Talks). This opens up a session in a browser window and does not require any local installation.
 
 ### Via GitHub Codespaces
 
