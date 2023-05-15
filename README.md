@@ -34,9 +34,9 @@ This opens up a session in a browser window and does not require any local insta
 
 ### Via GitHub Codespaces
 
-GitHub Codespaces are another way of accessing this code without any local installation. Go to the [project's homepage on GitHub](https://github.com/0art0/IISER-Pune-Type-Theory-Talks) and click on `<>Code > Codespaces > Create codespace on main` (see image).
+GitHub Codespaces are another way of accessing this code without any local installation. Go to the [project's homepage on GitHub](https://github.com/0art0/IISER-Pune-Type-Theory-Talks) and click on `Code > Codespaces > Create codespace on main` (see image).
 
-![GitHub CodeSpaces](./img/codespaces.png?raw=true "codespaces installation")
+![GitHub CodeSpaces installation](./img/codespaces.png?raw=true "GitHub CodeSpaces installation")
 
 The session may take a while to load.
 
