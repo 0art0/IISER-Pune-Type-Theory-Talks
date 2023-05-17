@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Propoositions as Types</title>
+<meta name="author" content="Anand Rao Tadipatri"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="../dist/reveal.css"/>
+
+<link rel="stylesheet" href="../dist/theme/black.css" id="theme"/>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Propoositions as Types</h1><p class="subtitle">Proofs as Terms</p>
+<h2 class="author">Anand Rao Tadipatri</h2><p class="date">Created: 2023-05-17 Wed 13:03</p>
+</section>
+
+<section>
+<section id="slide-overview-of-type-theory">
+<h2 id="overview-of-type-theory">Overview of Type Theory</h2>
+</section>
+<section id="slide-terms-and-types">
+<h3 id="terms-and-types">Terms and Types</h3>
+<ul>
+<li>The expressions in the framework of Type Theory are called <i>terms</i>,
+and each term has an associated <i>type</i>.</li>
+
+<li>The expression &ldquo;\(x\) is a term with type \(T\)&rdquo; is written as
+\[ x : T \]</li>
+
+<li>For example, if \(\mathbb{N}\) represents the type of natural numbers,
+then \(0 : \mathbb{N}\) and \(5 \cdot 3 + 4 : \mathbb{N}\) .</li>
+
+</ul>
+
+<p>
+Demonstrate some more examples on LEAN.
+</p>
+
+</section>
+<section id="slide-universes">
+<h3 id="universes">Universes</h3>
+<ul>
+<li>Common types like \(\mathbb{N}\) have type <code>Type</code>.</li>
+
+<li><code>Type</code> has type <code>Type 1</code>, <code>Type 1</code> has type <code>Type 2</code>, and so on.</li>
+
+<li>This hierarchy is non-cumulative.</li>
+
+</ul>
+
+</section>
+<section id="slide-function-types">
+<h3 id="function-types">Function Types</h3>
+<p>
+Building new types from old ones.
+</p>
+
+<ul>
+<li>If \(\alpha\) and \(\beta\) are types, \(\alpha \to \beta\) denotes
+the type of all functions from \(\alpha\) to \(\beta\).</li>
+
+<li>If \(f : \alpha \to \beta\) is a function and \(a : \alpha\) is a
+term, then \(\left( f \left( a \right) \right) : \beta\) denotes the
+application of \(f\) to the argument \(a\), and has the type
+\(\beta\).</li>
+
+</ul>
+
+
+<ul>
+<li>Functions can be constructed through a process known as <i>abstraction</i>:
+if \(x : \alpha\) is a term and \(t : \beta\) is a term of that can be
+constructed by temporarily postulating \(x\), then <code>λ x =&gt; t</code> denotes
+the function of type \(\alpha \to \beta\) that maps input \(x\) to the
+corresponding value \(t\).</li>
+
+<li>Functions that take in multiple arguments can be defined in terms of
+single-argument functions through a technique known as <i>Currying</i>.</li>
+
+</ul>
+
+<p>
+Some examples of function constructions, along with demonstration of
+product types.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-constructive-logic">
+<h2 id="constructive-logic">Constructive Logic</h2>
+<p>
+In constructive logic, proofs are constructive and do not make use of
+the law of excluded middle in general.
+</p>
+
+<p>
+Mathematical propositions are all of the type <i>Prop</i>.
+</p>
+
+</section>
+<section id="slide-implication">
+<h3 id="implication">Implication</h3>
+<ul>
+<li>For propositions \(P\) and \(Q\), if
+<ul>
+<li>one has a proof that \(P\) implies \(Q\) and</li>
+<li>another proof that \(P\) is true,</li>
+<li>one can construct a proof that \(Q\) is true via <i>modus ponens</i>.</li>
+
+</ul></li>
+<li><p>
+If a proof of proposition \(Q\) can be derived by temporarily
+postulating another proposition \(P\), then the proposition
+\(P \implies Q\) is true.
+</p></li>
+
+<li>This can be stated symbolically in a way that closely mirrors the
+rules of function application and abstraction.</li>
+
+<li>If \(p : P\) is a proof of proposition \(P\) and \(f : P \implies Q\)
+is a proof of \(P \implies Q\), then one can produce
+\(\left( f \left(p \right) \right) : Q\), a term of type \(Q\).</li>
+
+<li>If \(q : Q\) is a proof of proposition \(Q\) that can be constructed
+by temporarily postulating a proof \(p\) of proposition \(P\), then
+<code>λ (p : P) =&gt; q</code> is a proof of the proposition \(P \implies Q\).</li>
+
+</ul>
+
+</section>
+<section id="slide-the-curry-howard-correspondence">
+<h3 id="the-curry-howard-correspondence">The Curry-Howard correspondence</h3>
+<ul>
+<li>This link between the formalism of constructive logic and type theory
+and computation was observed by Haskell Curry and William Howard.</li>
+
+<li>It extends to other logical connectives and allows one to express
+logic and proofs inside the system of Type Theory.</li>
+
+</ul>
+
+<p>
+Demonstration of proofs of implication and correspondence with function
+types.
+</p>
+
+</section>
+<section id="slide-pat">
+<h3 id="pat">PAT</h3>
+<p>
+<b>P</b> ropositions <b>A</b> s <b>T</b> ypes
+</p>
+
+
+<p>
+<b>P</b> roofs <b>A</b> s <b>T</b> erms
+</p>
+
+</section>
+<section id="slide-conjunction">
+<h3 id="conjunction">Conjunction</h3>
+<ul>
+<li>In constructive logic, a conjunction \(P \wedge Q\) is proved by
+producing a proof of \(P\) as well as a proof of \(Q\).</li>
+
+</ul>
+
+
+<ul>
+<li>Thus the type \(P \wedge Q\) corresponds to the product type
+\(P \times Q\).</li>
+
+</ul>
+
+</section>
+<section id="slide-disjunction">
+<h3 id="disjunction">Disjunction</h3>
+<ul>
+<li>In constructive logic, a conjunction \(P \vee Q\) is proved by either
+producing a proof of \(P\) or a proof of \(Q\).</li>
+
+</ul>
+
+
+<ul>
+<li>The type \(P \vee Q\) corresponds to a disjoint sum of types
+\(P + Q\).</li>
+
+</ul>
+
+</section>
+<section id="slide-true-and-false">
+<h3 id="true-and-false">True and False</h3>
+<ul>
+<li>In constructive logic, <code>True</code> is identified with a unit type (i.e, a
+type with only a single term).</li>
+
+<li>Similarly, <code>False</code> is identified with the empty type (i.e., the type
+with no terms).</li>
+
+</ul>
+
+
+<ul>
+<li>These are denoted as \(\top\) and \(\bot\) respectively.</li>
+
+</ul>
+
+</section>
+<section id="slide-negation">
+<h3 id="negation">Negation</h3>
+<ul>
+<li>The negation of a proposition \(P\) is defined to be \(P \to \bot\).</li>
+
+<li>This states that \(\neg P\) can be derived by first assuming a proof
+of \(P\) and then deriving a proof of <code>False</code>.</li>
+
+</ul>
+
+<p>
+Derive this expression classically.
+</p>
+
+</section>
+<section id="slide-some-details-about-prop">
+<h3 id="some-details-about-prop">Some details about <code>Prop</code></h3>
+<ul>
+<li>The universe <code>Prop</code> has the property of <i>proof irrelevance</i>, roughly
+meaning that any two proofs of a proposition in <code>Prop</code> are equivalent.</li>
+
+<li>The universe <code>Prop</code> is <i>impredicative</i>, roughly meaning that a
+dependent function \(\forall a : \alpha, \beta\) has type <code>Prop</code>
+irrespective of the type of \(\alpha\) .</li>
+
+</ul>
+
+<p>
+Demonstrate some simple theorems.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-dependent-function-types">
+<h2 id="dependent-function-types">Dependent Function Types</h2>
+</section>
+<section id="slide-motivation">
+<h3 id="motivation">Motivation</h3>
+<ul>
+<li>Consider a function that takes a natural number \(n\) and outputs a
+list of the first \(n\) natural numbers.</li>
+
+<li>Can the information about the size of the output be encoded within the
+type of the function?</li>
+
+</ul>
+
+</section>
+<section id="slide-dependent-functions">
+<h3 id="dependent-functions">Dependent functions</h3>
+<ul>
+<li>Given a term \(a : \alpha\) , if one can produce a term \(t\) of type
+\(\beta(\alpha)\), where \(\beta(\alpha)\) is a type that depends on
+\(\alpha\), the function <code>λ (a : α) =&gt; t</code> has type <code>(a : α) → β a</code>.</li>
+
+<li>This is a generalisation of the regular function types. In fact,
+regular function types are implemented as a special case of dependent
+types in LEAN.</li>
+
+</ul>
+
+<p>
+These are roughly similar to an indexed family of sets.
+</p>
+
+</section>
+</section>
+<section>
+<section id="slide-constructive-logic-1">
+<h2 id="constructive-logic-1">Constructive Logic</h2>
+</section>
+<section id="slide-universal-quantifier">
+<h3 id="universal-quantifier">Universal Quantifier</h3>
+<ul>
+<li>A dependent type <code>(x : α) -&gt; p x</code>, in the special case where <code>p x</code> is
+of type <code>Prop</code>, denotes the assertion</li>
+
+</ul>
+
+<blockquote >
+<p>
+for every <code>x : α</code>, <code>p x</code> holds
+</p>
+</blockquote>
+
+<ul>
+<li>The unification of dependent products (another name for dependent
+functions) and universal quantification is another instance of the
+Curry-Howard correspondence.</li>
+
+</ul>
+
+</section>
+<section id="slide-existential-quantifier">
+<h3 id="existential-quantifier">Existential Quantifier</h3>
+<ul>
+<li>The existential quantifier for a proposition
+\((x : \alpha) \to p \left( x \right)\) is introduced by producing a
+specific \(a : \alpha\), together with a proof that \(p(a)\) holds.</li>
+
+<li>Existential quantifiers correspond to <i>dependent sums</i> under the
+Curry-Howard correspondence, which are a generalisation of the
+Cartesian product in which the second type in the product can depend
+on the first one.</li>
+
+</ul>
+
+<p>
+Demonstrate some theorems.
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="../dist/reveal.js"></script>
+<script src="../plugin/markdown/markdown.js"></script>
+<script src="../plugin/zoom/zoom.js"></script>
+<script src="../plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealMarkdown, RevealZoom, RevealNotes]
+});
+
+</script>
+</body>
+</html>

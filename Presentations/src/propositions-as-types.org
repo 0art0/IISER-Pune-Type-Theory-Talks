@@ -1,0 +1,259 @@
+#+title: Propoositions as Types
+#+subtitle: Proofs as Terms
+#+author: Anand Rao Tadipatri
+
+#+OPTIONS: num:nil toc:nil reveal_katex:t reveal_title_slide:auto
+#+REVEAL_TRANS: default
+#+REVEAL_ROOT: ..
+#+REVEAL_THEME: black
+#+REVEAL_MARGIN: 0.075
+#+REVEAL_MIN_SCALE: 0.3
+#+REVEAL_MAX_SCALE: 1.2
+
+#+begin_comment
+Instructions to export to =reveal.js=:
+- Run =M-x load-library=
+- Select =ox-reveal=
+- Run =C-c C-e= for the export menu
+- Select =R= for /reveal.js/
+#+end_comment
+
+* Overview of Type Theory
+:PROPERTIES:
+:CUSTOM_ID: overview-of-type-theory
+:END:
+** Terms and Types
+:PROPERTIES:
+:CUSTOM_ID: terms-and-types
+:END:
+- The expressions in the framework of Type Theory are called /terms/,
+  and each term has an associated /type/.
+
+- The expression "\(x\) is a term with type \(T\)" is written as
+  \[ x : T \]
+
+- For example, if \(\mathbb{N}\) represents the type of natural numbers,
+  then \(0 : \mathbb{N}\) and \(5 \cdot 3 + 4 : \mathbb{N}\) .
+
+Demonstrate some more examples on LEAN.
+
+** Universes
+:PROPERTIES:
+:CUSTOM_ID: universes
+:END:
+- Common types like \(\mathbb{N}\) have type =Type=.
+
+- =Type= has type =Type 1=, =Type 1= has type =Type 2=, and so on.
+
+- This hierarchy is non-cumulative.
+
+** Function Types
+:PROPERTIES:
+:CUSTOM_ID: function-types
+:END:
+
+Building new types from old ones.
+
+- If \(\alpha\) and \(\beta\) are types, \(\alpha \to \beta\) denotes
+  the type of all functions from \(\alpha\) to \(\beta\).
+
+- If \(f : \alpha \to \beta\) is a function and \(a : \alpha\) is a
+  term, then \(\left( f \left( a \right) \right) : \beta\) denotes the
+  application of \(f\) to the argument \(a\), and has the type
+  \(\beta\).
+
+#+REVEAL: SPLIT
+
+- Functions can be constructed through a process known as /abstraction/:
+  if \(x : \alpha\) is a term and \(t : \beta\) is a term of that can be
+  constructed by temporarily postulating \(x\), then =λ x => t= denotes
+  the function of type \(\alpha \to \beta\) that maps input \(x\) to the
+  corresponding value \(t\).
+
+- Functions that take in multiple arguments can be defined in terms of
+  single-argument functions through a technique known as /Currying/.
+
+Some examples of function constructions, along with demonstration of
+product types.
+
+* Constructive Logic
+:PROPERTIES:
+:CUSTOM_ID: constructive-logic
+:END:
+In constructive logic, proofs are constructive and do not make use of
+the law of excluded middle in general.
+
+Mathematical propositions are all of the type /Prop/.
+
+** Implication
+:PROPERTIES:
+:CUSTOM_ID: implication
+:END:
+- For propositions \(P\) and \(Q\), if
+  - one has a proof that \(P\) implies \(Q\) and
+  - another proof that \(P\) is true,
+  - one can construct a proof that \(Q\) is true via /modus ponens/.
+- If a proof of proposition \(Q\) can be derived by temporarily
+  postulating another proposition \(P\), then the proposition
+  \(P \implies Q\) is true.
+
+  #+REVEAL: SPLIT
+
+- This can be stated symbolically in a way that closely mirrors the
+  rules of function application and abstraction.
+
+- If \(p : P\) is a proof of proposition \(P\) and \(f : P \implies Q\)
+  is a proof of \(P \implies Q\), then one can produce
+  \(\left( f \left(p \right) \right) : Q\), a term of type \(Q\).
+
+- If \(q : Q\) is a proof of proposition \(Q\) that can be constructed
+  by temporarily postulating a proof \(p\) of proposition \(P\), then
+  =λ (p : P) => q= is a proof of the proposition \(P \implies Q\).
+
+** The Curry-Howard correspondence
+:PROPERTIES:
+:CUSTOM_ID: the-curry-howard-correspondence
+:END:
+- This link between the formalism of constructive logic and type theory
+  and computation was observed by Haskell Curry and William Howard.
+
+- It extends to other logical connectives and allows one to express
+  logic and proofs inside the system of Type Theory.
+
+Demonstration of proofs of implication and correspondence with function
+types.
+
+** PAT
+:PROPERTIES:
+:CUSTOM_ID: pat
+:END:
+
+*P* ropositions *A* s *T* ypes
+
+
+*P* roofs *A* s *T* erms
+
+** Conjunction
+:PROPERTIES:
+:CUSTOM_ID: conjunction
+:END:
+- In constructive logic, a conjunction \(P \wedge Q\) is proved by
+  producing a proof of \(P\) as well as a proof of \(Q\).
+
+#+REVEAL: SPLIT
+
+- Thus the type \(P \wedge Q\) corresponds to the product type
+  \(P \times Q\).
+
+** Disjunction
+:PROPERTIES:
+:CUSTOM_ID: disjunction
+:END:
+- In constructive logic, a conjunction \(P \vee Q\) is proved by either
+  producing a proof of \(P\) or a proof of \(Q\).
+
+#+REVEAL: SPLIT
+
+- The type \(P \vee Q\) corresponds to a disjoint sum of types
+  \(P + Q\).
+
+** True and False
+:PROPERTIES:
+:CUSTOM_ID: true-and-false
+:END:
+- In constructive logic, =True= is identified with a unit type (i.e, a
+  type with only a single term).
+
+- Similarly, =False= is identified with the empty type (i.e., the type
+  with no terms).
+
+#+REVEAL: SPLIT
+
+- These are denoted as \(\top\) and \(\bot\) respectively.
+
+** Negation
+:PROPERTIES:
+:CUSTOM_ID: negation
+:END:
+- The negation of a proposition \(P\) is defined to be \(P \to \bot\).
+
+- This states that \(\neg P\) can be derived by first assuming a proof
+  of \(P\) and then deriving a proof of =False=.
+
+Derive this expression classically.
+
+** Some details about =Prop=
+:PROPERTIES:
+:CUSTOM_ID: some-details-about-prop
+:END:
+- The universe =Prop= has the property of /proof irrelevance/, roughly
+  meaning that any two proofs of a proposition in =Prop= are equivalent.
+
+- The universe =Prop= is /impredicative/, roughly meaning that a
+  dependent function \(\forall a : \alpha, \beta\) has type =Prop=
+  irrespective of the type of \(\alpha\) .
+
+Demonstrate some simple theorems.
+
+* Dependent Function Types
+:PROPERTIES:
+:CUSTOM_ID: dependent-function-types
+:END:
+** Motivation
+:PROPERTIES:
+:CUSTOM_ID: motivation
+:END:
+- Consider a function that takes a natural number \(n\) and outputs a
+  list of the first \(n\) natural numbers.
+
+- Can the information about the size of the output be encoded within the
+  type of the function?
+
+** Dependent functions
+:PROPERTIES:
+:CUSTOM_ID: dependent-functions
+:END:
+- Given a term \(a : \alpha\) , if one can produce a term \(t\) of type
+  \(\beta(\alpha)\), where \(\beta(\alpha)\) is a type that depends on
+  \(\alpha\), the function =λ (a : α) => t= has type =(a : α) → β a=.
+
+- This is a generalisation of the regular function types. In fact,
+  regular function types are implemented as a special case of dependent
+  types in LEAN.
+
+These are roughly similar to an indexed family of sets.
+
+* Constructive Logic
+:PROPERTIES:
+:CUSTOM_ID: constructive-logic-1
+:END:
+** Universal Quantifier
+:PROPERTIES:
+:CUSTOM_ID: universal-quantifier
+:END:
+- A dependent type =(x : α) -> p x=, in the special case where =p x= is
+  of type =Prop=, denotes the assertion
+
+#+begin_quote
+for every =x : α=, =p x= holds
+
+#+end_quote
+
+- The unification of dependent products (another name for dependent
+  functions) and universal quantification is another instance of the
+  Curry-Howard correspondence.
+
+** Existential Quantifier
+:PROPERTIES:
+:CUSTOM_ID: existential-quantifier
+:END:
+- The existential quantifier for a proposition
+  \((x : \alpha) \to p \left( x \right)\) is introduced by producing a
+  specific \(a : \alpha\), together with a proof that \(p(a)\) holds.
+
+- Existential quantifiers correspond to /dependent sums/ under the
+  Curry-Howard correspondence, which are a generalisation of the
+  Cartesian product in which the second type in the product can depend
+  on the first one.
+
+Demonstrate some theorems.
