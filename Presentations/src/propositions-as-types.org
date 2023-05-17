@@ -1,4 +1,4 @@
-#+title: Propoositions as Types
+#+title: Propositions as Types
 #+subtitle: Proofs as Terms
 #+author: Anand Rao Tadipatri
 
@@ -47,6 +47,8 @@ Demonstrate some more examples on LEAN.
 
 - This hierarchy is non-cumulative.
 
+- Propositions live in the universe =Prop=, which is a level below =Type= in the hierarchy.
+
 ** Function Types
 :PROPERTIES:
 :CUSTOM_ID: function-types
@@ -62,7 +64,7 @@ Building new types from old ones.
   application of \(f\) to the argument \(a\), and has the type
   \(\beta\).
 
-#+REVEAL: SPLIT
+#+REVEAL: split
 
 - Functions can be constructed through a process known as /abstraction/:
   if \(x : \alpha\) is a term and \(t : \beta\) is a term of that can be
@@ -97,7 +99,7 @@ Mathematical propositions are all of the type /Prop/.
   postulating another proposition \(P\), then the proposition
   \(P \implies Q\) is true.
 
-  #+REVEAL: SPLIT
+  #+REVEAL: split
 
 - This can be stated symbolically in a way that closely mirrors the
   rules of function application and abstraction.
@@ -140,7 +142,7 @@ types.
 - In constructive logic, a conjunction \(P \wedge Q\) is proved by
   producing a proof of \(P\) as well as a proof of \(Q\).
 
-#+REVEAL: SPLIT
+#+REVEAL: split
 
 - Thus the type \(P \wedge Q\) corresponds to the product type
   \(P \times Q\).
@@ -152,7 +154,7 @@ types.
 - In constructive logic, a conjunction \(P \vee Q\) is proved by either
   producing a proof of \(P\) or a proof of \(Q\).
 
-#+REVEAL: SPLIT
+#+REVEAL: split
 
 - The type \(P \vee Q\) corresponds to a disjoint sum of types
   \(P + Q\).
@@ -167,7 +169,7 @@ types.
 - Similarly, =False= is identified with the empty type (i.e., the type
   with no terms).
 
-#+REVEAL: SPLIT
+#+REVEAL: split
 
 - These are denoted as \(\top\) and \(\bot\) respectively.
 

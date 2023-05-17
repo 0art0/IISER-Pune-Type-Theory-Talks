@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Propoositions as Types</title>
+<title>Propositions as Types</title>
 <meta name="author" content="Anand Rao Tadipatri"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -18,8 +18,8 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">Propoositions as Types</h1><p class="subtitle">Proofs as Terms</p>
-<h2 class="author">Anand Rao Tadipatri</h2><p class="date">Created: 2023-05-17 Wed 13:03</p>
+<section id="sec-title-slide"><h1 class="title">Propositions as Types</h1><p class="subtitle">Proofs as Terms</p>
+<h2 class="author">Anand Rao Tadipatri</h2><p class="date">Created: 2023-05-17 Wed 15:56</p>
 </section>
 
 <section>
@@ -54,6 +54,8 @@ Demonstrate some more examples on LEAN.
 
 <li>This hierarchy is non-cumulative.</li>
 
+<li>Propositions live in the universe <code>Prop</code>, which is a level below <code>Type</code> in the hierarchy.</li>
+
 </ul>
 
 </section>
@@ -74,6 +76,8 @@ application of \(f\) to the argument \(a\), and has the type
 
 </ul>
 
+</section>
+<section id="slide-function-types-split">
 
 <ul>
 <li>Functions can be constructed through a process known as <i>abstraction</i>:
@@ -121,7 +125,10 @@ Mathematical propositions are all of the type <i>Prop</i>.
 If a proof of proposition \(Q\) can be derived by temporarily
 postulating another proposition \(P\), then the proposition
 \(P \implies Q\) is true.
-</p></li>
+</p>
+
+</section>
+<section id="slide-org28f9864-split"></li>
 
 <li>This can be stated symbolically in a way that closely mirrors the
 rules of function application and abstraction.</li>
@@ -174,6 +181,8 @@ producing a proof of \(P\) as well as a proof of \(Q\).</li>
 
 </ul>
 
+</section>
+<section id="slide-conjunction-split">
 
 <ul>
 <li>Thus the type \(P \wedge Q\) corresponds to the product type
@@ -190,6 +199,8 @@ producing a proof of \(P\) or a proof of \(Q\).</li>
 
 </ul>
 
+</section>
+<section id="slide-disjunction-split">
 
 <ul>
 <li>The type \(P \vee Q\) corresponds to a disjoint sum of types
@@ -209,6 +220,8 @@ with no terms).</li>
 
 </ul>
 
+</section>
+<section id="slide-true-and-false-split">
 
 <ul>
 <li>These are denoted as \(\top\) and \(\bot\) respectively.</li>
