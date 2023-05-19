@@ -16,7 +16,7 @@ variable (P Q R : Prop)
 
 example : P → P := by sorry
 
-example : P → (P → Q) := by sorry
+example : P → (P → Q) → Q := by sorry
  
 example : Q → (P → Q) := by sorry
 
