@@ -9,7 +9,7 @@ variable (P Q R : Prop)
 
 example : P → P := sorry
 
-example : P → (P → Q) := sorry
+example : P → (P → Q) → Q := sorry
  
 example : Q → (P → Q) := sorry
 
