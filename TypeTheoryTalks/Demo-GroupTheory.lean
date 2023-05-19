@@ -24,14 +24,12 @@ since the remaining two are in fact consequences of the above.
 namespace Group'
 
 /-! Let `G` be a group, and let `a`, `b` and `c` be elements of `G`. -/
-variable (G : Type) [Group' G] (a b c : G)
+variable {G : Type} [Group' G] {a b c : G}
 
 lemma mul_left_cancel (h : a * b = a * c) : b = c := by
-  -- The mathematics proof:
-  --
   sorry
 
-lemma mul_eq_of_eq_inv_mul (h : b = a⁻¹ * c) : a * b = c := by
+lemma mul_eq_of_eq_inv_mul (h : a⁻¹ * c = b) : a * b = c := by
   sorry
 
 /-- One of the two missing group axioms -/
@@ -41,7 +39,6 @@ lemma mul_one (a : G) : a * 1 = a := by
 /-- The other missing group axiom -/
 lemma mul_inv_self (a : G) : a * a⁻¹ = 1 := by
   sorry
-
 
 section Simplifier
 
@@ -68,11 +65,11 @@ The list of remaining lemmas needed to make the rewrite system confluent come fr
 @[simp] lemma mul_inv_cancel_left : a * (a⁻¹ * b) = b := by
   sorry
 
-lemma left_inv_eq_right_inv {a b c : G} (h1 : b * a = 1) (h2 : a * c = 1) : 
+lemma left_inv_eq_right_inv {a b c : G} (h₁ : b * a = 1) (h₂ : a * c = 1) : 
     b = c := by
   sorry
 
-lemma mul_eq_one_iff_eq_inv : a * b = 1 ↔ a⁻¹ = b := 
+lemma mul_eq_one_iff_eq_inv : a * b = 1 ↔ a⁻¹ = b := by
   sorry
 
 @[simp] lemma one_inv : (1 : G)⁻¹ = 1 := by
@@ -93,7 +90,7 @@ end Simplifier
 section Bonus
 
 /-- If the square of every group element is trivial, then the group itself is Abelian. -/
-example (G : Type) [Group' G] (h : ∀ g : G, g * g = 1) :
+example (G : Type) [Group' G] (hyp : ∀ g : G, g * g = 1) :
     ∀ g h : G, g * h = h * g := by
   sorry
 
