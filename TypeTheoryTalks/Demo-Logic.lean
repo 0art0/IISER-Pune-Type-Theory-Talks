@@ -7,32 +7,34 @@ This file contains some logic puzzles in Lean.
 
 variable (P Q R : Prop)
 
-example : P → P := sorry
+example : P → P := fun p ↦ p
 
-example : P → (P → Q) → Q := sorry
+example : P → (P → Q) → Q := fun p h ↦h p
  
-example : Q → (P → Q) := sorry
+example : Q → (P → Q) := fun q _ ↦ q
 
-example : P ∧ Q → P := sorry
+example : P ∧ Q → P := fun ⟨p, _⟩ ↦ p
 
-example : P ∧ Q → Q := sorry
+example : P ∧ Q → Q := fun ⟨_, q⟩ ↦ q
 
-example : P → Q → (P ∧ Q) := sorry
+example : P → Q → (P ∧ Q) := fun p q ↦ ⟨p, q⟩
 
-example : P → P ∨ Q := sorry
+example : P → P ∨ Q := fun p ↦ Or.inl p
 
-example : Q → P ∨ Q := sorry
+example : Q → P ∨ Q := fun q ↦ Or.inr q
 
-example : (P → R) → (Q → R) → (P ∨ Q → R) := sorry
+example : (P → R) → (Q → R) → (P ∨ Q → R) := fun h h' ↦ fun
+  | Or.inl p => h p
+  | Or.inr q => h' q
 
-example : True := sorry
+example : True := True.intro
 
-example : P → True := sorry
+example : P → True := fun _ ↦ True.intro
 
-example : False → P := sorry
+example : False → P := False.elim
 
-example : (True → False) → False := sorry
+example : (True → False) → False := fun h ↦ h True.intro
 
-example : (P → False) → ¬P := sorry
+example : (P → False) → ¬P := fun h ↦ h
 
-example : (P → Q) → (¬Q → ¬P) := sorry
+example : (P → Q) → (¬Q → ¬P) := fun h nq p ↦ nq (h p)
