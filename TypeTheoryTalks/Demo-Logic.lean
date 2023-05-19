@@ -1,4 +1,9 @@
-import Mathlib.Tactic
+/-!
+The *Curry-Howard correspondence* treats propositions as types, proofs as terms, and
+logical connectives and their rules as special cases of general constructions of types.
+
+This file contains some logic puzzles in Lean.
+-/
 
 variable (P Q R : Prop)
 
