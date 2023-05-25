@@ -1,3 +1,3 @@
 import TypeTheoryTalks.Introduction
-import TypeTheoryTalks.Demo-GroupTheory
-import TypeTheoryTalks.Demo-ProgrammingInLean
+import TypeTheoryTalks.Demo_GroupTheory
+import TypeTheoryTalks.Demo_ProgrammingInLean
