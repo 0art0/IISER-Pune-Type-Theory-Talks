@@ -53,7 +53,7 @@ elab "#symbolic" e:arith : command => do
   let out ← queryPari <| arithToString e
   logInfo out
 
-#symbolic 2 * 3                    -- 4
+#symbolic 2 * 3                    -- 6
 #symbolic (x ^ 2 - 1) / (x + 1)    -- x - 1
 #symbolic (a + 2) * (8 * a + 17)   -- 8*a^2 + 33*a + 34
 

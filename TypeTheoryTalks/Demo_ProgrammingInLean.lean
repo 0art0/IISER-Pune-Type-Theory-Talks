@@ -23,6 +23,8 @@ section HelloWorld
 def helloWorld : IO Unit := 
   IO.println "Hello, world!"
 
+#eval helloWorld
+
 end HelloWorld
 
 namespace Sorting
@@ -56,16 +58,44 @@ variable {α : Type _} [LinearOrder α] [DecidableRel <| LE.le (α := α)]
   | [] => []
   | h :: tail => insertInOrder h (insertionSort tail)
 
-#eval insertionSort [1, 2, 3, 0, 12, 21, 30, 54]
+#eval insertionSort [4, 3]
+#eval insertionSort [1, 2349, 2, 21, 3, 0, 12, 33, 30, 54]
 
 attribute [simp] le_of_not_le
 attribute [-simp] not_le
 
 /-- Inserting an element in a sorted list leaves the result sorted. -/
-lemma sorted_insertInOrder (l : List α) (hyp : isSorted l) (a : α) : isSorted (insertInOrder a l) := sorry       
+lemma sorted_insertInOrder (l : List α) (hyp : isSorted l) (a : α) : isSorted (insertInOrder a l) := by
+  induction l with
+    | nil => simp
+    | cons h t ih => 
+      match t with
+        | .nil => 
+          by_cases c:a ≤ h
+          · simp [c]
+          · simp [c] 
+        | .cons h' t' =>
+          by_cases c:a ≤ h
+          · simp [c]
+            exact hyp
+          · simp [c]
+            by_cases c':a ≤ h'
+            · simp [c']
+              simp at hyp
+              exact ⟨le_of_not_le c, hyp.right⟩
+            · simp [c']
+              simp [c'] at ih
+              simp at hyp
+              exact ⟨hyp.left, ih hyp.right⟩
 
 /-- The output of `insertionSort` is sorted. -/
-theorem sorted_insertionSort (l : List α) : isSorted (insertionSort l) := sorry 
+theorem sorted_insertionSort (l : List α) : isSorted (insertionSort l) := by
+  induction l with
+    | nil => simp
+    | cons h t ih => 
+      simp
+      apply sorted_insertInOrder
+      exact ih
 
 end Sorting
 
@@ -91,8 +121,12 @@ def pow2Count : Nat := Id.run do
       count := count + 1
   return count
 
+#eval pow2Count
+
 def pow2Count' :=
   List.range 16 |>.map (2 ^ ·) |>.filter (· % 10 = 2) |>.length
+
+#eval pow2Count'
 
 end FunctionalProgramming
 
@@ -160,7 +194,7 @@ def queryPari (a : TSyntax `arith) : IO String := do
 
 elab "#symbolic" e:arith : command => do
   let out ← queryPari e
-  logInfoAt e out
+  logInfo out
 
 #symbolic 2 + 2                    -- 4
 #symbolic (x ^ 2 - 1) / (x + 1)    -- x - 1
@@ -209,7 +243,7 @@ example (a b : ℤ) : (a + b)^2 = a^2 + 2*a*b + b^2 := by ring
 open Lean Elab Term Tactic in
 elab "trace_goal" : tactic => do
   let mainGoal ← getMainGoal 
-  logInfo mainGoal
+  logInfo m!"The goal is {mainGoal}"
 
 example : 1 = 1 := by
   trace_goal
@@ -218,7 +252,6 @@ example : 1 = 1 := by
 end Tactics
 
 section Widgets
-
   /-!
   ## User Widgets
   Lean supports a framework of interactive and extensible *user widgets* for visualisation.
