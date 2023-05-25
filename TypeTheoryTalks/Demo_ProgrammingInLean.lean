@@ -1,5 +1,6 @@
 import Mathlib.Data.Nat.Basic
 import Mathlib.Tactic.Ring
+import ProofWidgets.Demos.Rubiks
 import Aesop
 import Lean
 
@@ -205,10 +206,30 @@ section Tactics
 
 example (a b : ℤ) : (a + b)^2 = a^2 + 2*a*b + b^2 := by ring
 
+open Lean Elab Term Tactic in
+elab "trace_goal" : tactic => do
+  let mainGoal ← getMainGoal 
+  logInfo mainGoal
 
--- trace_goal
+example : 1 = 1 := by
+  trace_goal
+  rfl
 
 end Tactics
+
+section Widgets
+
+  /-!
+  ## User Widgets
+  Lean supports a framework of interactive and extensible *user widgets* for visualisation.
+  -/
+
+open Lean ProofWidgets
+open scoped ProofWidgets.Jsx
+
+#html <Rubiks seq={eg} />
+
+end Widgets
 
 section Showcase
 
