@@ -14,6 +14,7 @@ local notation  " □ "  => unit
 structure Variable {𝓣 : Type _} [ΛCalculus 𝓣] (A : 𝓣) where
   idx : Nat
   name : String
+  deriving DecidableEq
 
 inductive Context (𝓣 : Type _) [ΛCalculus 𝓣] where
   | nil : Context 𝓣
@@ -42,6 +43,36 @@ inductive Term {𝓣 : Type _} [ΛCalculus 𝓣] : Context 𝓣 → 𝓣 → Typ
   | proj   : {Γ : Context 𝓣} → {A B : 𝓣} → Term Γ (A ⊗ B) → Term Γ A
   | proj'  : {Γ : Context 𝓣} → {A B : 𝓣} → Term Γ (A ⊗ B) → Term Γ B
   | extend : {Γ Γ' : Context 𝓣} → Γ ⊆ Γ' → {A : 𝓣} → Term Γ A → Term Γ' A
+
+inductive BTerm {𝓣 : Type _} [ΛCalculus 𝓣] : Context 𝓣 → 𝓣 → Type _
+  | bvar   : {Γ : Context 𝓣} → {A : 𝓣} → (level : Nat) → BTerm Γ A
+  | fvar   : {Γ : Context 𝓣} → {A : 𝓣} → (v : Variable A) → BTerm (v :: Γ) A
+  | app    : {Γ : Context 𝓣} → {A B : 𝓣} → BTerm Γ (A ⥤ B) → BTerm Γ A → BTerm Γ B
+  | lam    : {Γ : Context 𝓣} → (A : 𝓣) → {B : 𝓣} → BTerm Γ B → BTerm Γ (A ⥤ B)
+  | star   : {Γ : Context 𝓣} → BTerm Γ □
+  | pair   : {Γ : Context 𝓣} → {A B : 𝓣} → BTerm Γ A → BTerm Γ B → BTerm Γ (A ⊗ B)
+  | proj   : {Γ : Context 𝓣} → {A B : 𝓣} → BTerm Γ (A ⊗ B) → BTerm Γ A
+  | proj'  : {Γ : Context 𝓣} → {A B : 𝓣} → BTerm Γ (A ⊗ B) → BTerm Γ B
+  | extend : {Γ Γ' : Context 𝓣} → Γ ⊆ Γ' → {A : 𝓣} → BTerm Γ A → BTerm Γ' A   
+
+def BTerm.abs {𝓣 : Type _} [ΛCalculus 𝓣] {Γ : Context 𝓣} {A : 𝓣} (v : Variable A) : {B : 𝓣} → BTerm (v :: Γ) B → BTerm Γ (A ⥤ B) := by
+  intro _ t
+  cases t 
+  -- | .bvar l => _
+  -- | .fvar w => _
+  -- | .app f a => _
+  -- | .lam A v => _
+  -- | .star => _
+  -- | .pair x y => _
+  -- | .proj p => _
+  -- | .proj' p => _
+  -- | .extend h b => _
+
+
+
+#check Subtype (fun (p, q) ↦ Nat.Prime p ∧ Nat.Prime q ∧ p ≠ q)
+
+#exit
 
 macro x:ident "⟦" n:num "⟧" : term => `(Variable.mk $n $(Lean.quote (toString x.getId)))
 macro x:ident "⟦" n:num "⟧" " : " A:term : term => `((Variable.mk $n $(Lean.quote (toString x.getId)) : Variable $A))
@@ -74,7 +105,7 @@ structure equiv {𝓣 : Type _} [ΛCalculus 𝓣] (rel : {Γ : Context 𝓣} →
   
   extend : {Γ Γ' : Context 𝓣} → (h : Γ ⊆ Γ') → {A : 𝓣} → {a a' : Term Γ A} → rel a a' → rel (.extend h a) (.extend h a')
   app    : {Γ : Context 𝓣} → {A B : 𝓣} → {a a' : Term Γ A} → (f : Term Γ (A ⥤ B)) → rel a a' → rel (f ≀ a) (f ≀ a')
-  abst   : {Γ : Context 𝓣} → {A B : 𝓣} → (v : Variable A) → {φ φ' : Term (v :: Γ) B} → rel (λ v ◾ φ) (λ v ◾ φ')
+  abst   : {Γ : Context 𝓣} → {A B : 𝓣} → (v : Variable A) → {φ φ' : Term (v :: Γ) B} → rel φ φ' → rel (λ v ◾ φ) (λ v ◾ φ')
   
   unit   : {Γ : Context 𝓣} → (a : Term Γ □) → rel a ⋆
   proj   : {Γ : Context 𝓣} → {A B : 𝓣} → {a : Term Γ A} → {b : Term Γ B} → rel π[⟨a, b⟩] a
