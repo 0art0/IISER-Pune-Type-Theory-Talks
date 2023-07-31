@@ -8,11 +8,16 @@ package TypeTheoryTalks {
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4.git"
 
-require proofwidgets from git "https://github.com/EdAyers/ProofWidgets4"@"v0.0.7"
+require leanslides from git "https://github.com/0art0/lean-slides"@"master"
 
 @[default_target]
 lean_lib TypeTheoryTalks {
   -- add configuration options here
+}
+
+@[default_target]
+lean_lib LeanIntroTalks {
+  precompileModules := true
 }
 
 @[default_target]
