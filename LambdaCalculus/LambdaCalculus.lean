@@ -55,9 +55,9 @@ inductive BTerm {𝓣 : Type _} [ΛCalculus 𝓣] : Context 𝓣 → 𝓣 → Ty
   | proj'  : {Γ : Context 𝓣} → {A B : 𝓣} → BTerm Γ (A ⊗ B) → BTerm Γ B
   | extend : {Γ Γ' : Context 𝓣} → Γ ⊆ Γ' → {A : 𝓣} → BTerm Γ A → BTerm Γ' A   
 
-def BTerm.abs {𝓣 : Type _} [ΛCalculus 𝓣] {Γ : Context 𝓣} {A : 𝓣} (v : Variable A) : {B : 𝓣} → BTerm (v :: Γ) B → BTerm Γ (A ⥤ B) := by
-  intro _ t
-  cases t 
+  -- def BTerm.abs {𝓣 : Type _} [ΛCalculus 𝓣] {Γ : Context 𝓣} {A : 𝓣} (v : Variable A) : {B : 𝓣} → BTerm (v :: Γ) B → BTerm Γ (A ⥤ B) := by
+  --   intro _ t
+  --   cases t 
   -- | .bvar l => _
   -- | .fvar w => _
   -- | .app f a => _
@@ -67,12 +67,6 @@ def BTerm.abs {𝓣 : Type _} [ΛCalculus 𝓣] {Γ : Context 𝓣} {A : 𝓣} (
   -- | .proj p => _
   -- | .proj' p => _
   -- | .extend h b => _
-
-
-
-#check Subtype (fun (p, q) ↦ Nat.Prime p ∧ Nat.Prime q ∧ p ≠ q)
-
-#exit
 
 macro x:ident "⟦" n:num "⟧" : term => `(Variable.mk $n $(Lean.quote (toString x.getId)))
 macro x:ident "⟦" n:num "⟧" " : " A:term : term => `((Variable.mk $n $(Lean.quote (toString x.getId)) : Variable $A))

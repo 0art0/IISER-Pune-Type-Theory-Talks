@@ -1,0 +1,9 @@
+#+#+TITLE: IISER Pune talk abstracts
+
+* Proof assistants: History, Ideas and Future
+
+It has been known for over a century that all of mathematics can be encoded in a logical foundation in principle. Softwares known as proof assistants or interactive theorem provers now make this possible in practice. The recent years have seen a tremendous amount of activity around formalising mathematics in such softwares, resulting in large libraries of formal mathematics featuring nearly the entire undergraduate curriculum and several topics of modern mathematics. The foundations of some of these proof assistants also permit them to be used as general-purpose and efficient programming languages, opening up an exciting set of possibilities for combining programs and proofs. This talk will begin with an introduction to interactive theorem provers and their capabilities. Later on in the talk, I will speculate on future developments surrounding this technology which might turn interactive theorem provers into valuable tools for the working mathematician.
+
+* Proving, Programming and Metaprogramming in Lean 4: A tutorial
+
+Lean 4, the latest iteration of the Lean proof assistant, is both an interactive theorem prover and a general-purpose programming language. Further, Lean 4 features a powerful meta-programming framework which allows users to extend the system in several ways. This talk aims to be a hands-on introduction to using Lean 4 as a theorem prover and a programming language, using examples from undergraduate-level mathematics. Some examples of meta-programming in Lean 4 will be featured, but will not be the focus of the talk.
