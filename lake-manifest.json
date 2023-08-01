@@ -34,7 +34,7 @@
   {"git":
    {"url": "https://github.com/0art0/lean-slides",
     "subDir?": null,
-    "rev": "092cbe1b297ed47da195c82c0be5616bd8dbcf97",
+    "rev": "c3c844489c7b613bea8b864e224e546253ff08bd",
     "name": "leanslides",
     "inputRev?": "master"}},
   {"git":
