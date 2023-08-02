@@ -10,7 +10,7 @@ import Lean
 # Proof Assistants : History, Ideas and Future
 -/
 
-#slides +draft Intro /-!
+#slides Intro /-!
 % Proof Assistants: History, Ideas and Future
 % IISER Pune
 % 2nd August, 2023
@@ -19,7 +19,7 @@ import Lean
 
 ![An earlier article by Herman Geuvers](https://github.com/0art0/IISER-Pune-Type-Theory-Talks/blob/main/.img/proof-assistants-history-ideas-future.png?raw=true)
 
-## Talk outline
+# Talk outline
 
 - An introduction to interactive theorem provers
 - An overview of what has been accomplished so far
@@ -31,14 +31,14 @@ import Lean
 
 > An interactive theorem prover (or proof assistant) is a kind of mathematical technology for constructing and verifying formal mathematical proofs. 
 
-## Mathematical software
+# Mathematical software
 
 - **Numerical analysis and statistics**: `R`, `MATLAB`, `numpy`, ...
 - **Symbolic algebra**: `SageMath`, `Maple`, `Magma`, ...
 - **Communication and publication**: $\LaTeX$
 - **Mathematical reasoning**: `Lean`, `Agda`, `Coq`, ...
 
-## Modern proof assistants
+# Modern proof assistants
 
 - Isabelle
 - PVS
@@ -49,7 +49,7 @@ import Lean
 - Metamath
 - HOL Light
 
-## `Lean`
+# `Lean`
 
 - `Lean` is an interactive theorem prover and programming language 
   based on the foundation of dependent type theory.
@@ -57,7 +57,7 @@ import Lean
   Leonardo de Moura and Sebastian Ullrich.
 - `Lean` has a large library of formal mathematics, 
   known as mathlib.
-- `Lean4` is also designed to be a 
+- `Lean 4` is also designed to be a 
   fast and general-purpose programming language.
 - Lean is common platform for programs and proofs, 
   allowing them to be mixed in novel ways.
@@ -81,7 +81,7 @@ theorem sumUpto_eq : ∀ n : ℕ, 2 * sumUpto n = n * (n + 1) := by
 /-! ## Computing with `sumUpto` -/
 #eval sumUpto 5
 
-#slides +draft Formalisation /-!
+#slides Formalisation /-!
 
 # Formalisation
 
@@ -90,7 +90,7 @@ build up proofs interactively at a high level,
 modern proof assistants are beginning to make the 
 large-scale formalisation of mathematics practical.
 
-## Libraries of formal mathematics
+# Libraries of formal mathematics
 
 - Lean's `mathlib`
 - Isabelle's `Archive of Formal Proofs`
@@ -98,7 +98,7 @@ large-scale formalisation of mathematics practical.
 - The `Mizar Mathematical Library`
 - The `Agda-UniMath` library
 
-## Notable formalisations
+# Notable formalisations
 
 - The Jordan curve theorem
 - The Prime Number theorem
@@ -107,7 +107,7 @@ large-scale formalisation of mathematics practical.
 - The central theorem of condensed mathematics
 - Sphere eversion
 
-## Benefits of formalisation
+# Benefits of formalisation
 
 - Checking consistency and validity of mathematical arguments
 - Formally verifying hardware and software
@@ -119,7 +119,7 @@ large-scale formalisation of mathematics practical.
 #html iframeComponent 
   "https://leanprover-community.github.io/mathlib4_docs/"
 
-#slides +draft Future /-!
+#slides Future /-!
 
 # The future of proof assistants
 
@@ -139,7 +139,7 @@ formal mathematics and mathematical practice:
   more amenable to formalisation
 -/
 
-#slides +draft Automation /-!
+#slides Automation /-!
 
 ## Automation of "routine proofs"
 
@@ -175,7 +175,7 @@ example (x y : ℚ) (h1 : x*y + 2*x = 1) (h2 : x = y) :
   sorry
   -- polyrith
 
-#slides +draft InterfacesTooling /-!
+#slides InterfacesTooling /-!
 
 ## Interfaces and tooling 
 
@@ -217,7 +217,7 @@ open scoped ProofWidgets.Jsx ProofWidgets.Json in
   }
 }
 
-#slides +draft Mathematics /-!
+#slides Mathematics /-!
 
 ## Improving foundations
 
@@ -242,7 +242,7 @@ unifies the various kinds of limits in analysis.
 
 -/
 
-#slides +draft Exposition /-!
+#slides Exposition /-!
 
 ## Exposition
 
@@ -264,7 +264,7 @@ and learn from the material in these libraries.
 open scoped ProofWidgets.Jsx in
 #html <Rubiks seq={#["L", "L", "D⁻¹", "U⁻¹", "L", "D", "D", "L", "U⁻¹", "R", "D", "F", "F", "D"]} />
 
-#slides +draft AI /-!
+#slides AI /-!
 
 ## Artificial intelligence and mathematics
 
@@ -275,6 +275,7 @@ hold enormous promise for integration with proof assistants.
 ---
 
 Large language models can be used to:
+
 - Auto-formalise mathematics into Lean
 - Search and answer questions about results in the library
 - Suggest various tactic and code completions
@@ -286,7 +287,7 @@ Large language models can be used to:
 open scoped ProofWidgets.Jsx in
 #html <img src="http://localhost:5000/Presentations/src/leanaide-mathlib4.gif" />
 
-#slides +draft Conclusion /-!
+#slides Conclusion /-!
 
 ## Proof assistants
 
@@ -312,6 +313,7 @@ other kinds of mathematical software.
 ## Resources
 
 Some resources for learning Lean:
+
 - [The Natural Number Game](https://adam.math.hhu.de/#/g/hhu-adam/NNG4)
 - [Mathematics in Lean 4](https://leanprover-community.github.io/mathematics_in_lean/)
 - [Theorem Proving in Lean 4](https://leanprover.github.io/theorem_proving_in_lean4/title_page.html)
