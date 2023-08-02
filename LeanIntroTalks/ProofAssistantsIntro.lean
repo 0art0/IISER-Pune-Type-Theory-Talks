@@ -284,7 +284,7 @@ Large language models can be used to:
 /-! A demonstration of `LeanAIde`, 
   a statement auto-formalisation tool for Lean. -/
 open scoped ProofWidgets.Jsx in
-#html <img src="../Presentations/src/.img/leanaide-mathlib4.gif" />
+#html <img src="http://localhost:5000/Presentations/src/leanaide-mathlib4.gif" />
 
 #slides +draft Conclusion /-!
 
