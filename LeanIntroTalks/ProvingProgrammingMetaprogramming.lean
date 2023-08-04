@@ -1,5 +1,6 @@
 import Mathlib.Tactic
 import Mathlib.Data.Int.GCD
+import Aesop
 import ProofWidgets.Component.HtmlDisplay
 import Lean
 
@@ -113,23 +114,27 @@ end Widget
 
 #check Int.gcd_eq_gcd_ab -- ∀ (x y : ℤ), ↑(Int.gcd x y) = x * Int.gcdA x y + y * Int.gcdB x y
 
-#check Int.gcd_dvd_left -- ∀ (i j : ℤ), ↑(Int.gcd i j) ∣ i
-#check Int.dvd_mul_right -- ∀ (a b : ℤ), a ∣ a * b
-#check dvd_add /-∀ {α : Type u_1} [inst : Add α] [inst_1 : Semigroup α] [inst_2 : LeftDistribClass α] {a b c : α},
-  a ∣ b → a ∣ c → a ∣ b + c-/
+attribute [aesop safe forward] Int.gcd_dvd_left Int.gcd_dvd_right 
+attribute [aesop safe apply] Int.dvd_mul_right
 
+attribute [aesop safe apply] Int.mul_ediv_cancel_of_emod_eq_zero Int.emod_eq_zero_of_dvd
 
-#check Int.mul_ediv_cancel_of_emod_eq_zero -- ∀ {a b : ℤ}, a % b = 0 → b * (a / b) = a
-#check Int.emod_eq_zero_of_dvd -- ∀ {a b : ℤ}, a ∣ b → b % a = 0
+def bezout_coeff {a b c : ℤ} (h : ↑(Int.gcd a b) ∣ c) : 
+    {p : ℤ × ℤ // a * p.fst + b * p.snd = c} := by
+  sorry
 
 /-- The Diophantine equation `a * x + b * y = c` has a solution
     if and only if `gcd a b` divides `c`. -/
-lemma eqn_solvable_iff_divides_gcd (a b c : ℤ) :
+theorem eqn_solvable_iff_divides_gcd (a b c : ℤ) :
     (∃ x : ℤ, ∃ y : ℤ,  a * x + b * y = c) ↔  ↑(Int.gcd a b) ∣ c := by
   sorry
 
 /-- Solvability of linear Diophantine equations is a decidable problem. -/
-instance : Decidable (∃ x : ℤ, ∃ y : ℤ,  a * x + b * y = c) := 
-  sorry
+instance : Decidable (∃ x : ℤ, ∃ y : ℤ,  a * x + b * y = c) := by
+  rw [eqn_solvable_iff_divides_gcd]
+  infer_instance
+
+macro "Is the integer " c:num " in the linear span of " a:num " and " b:num "?" : term =>
+  `(term| ∃ x : ℤ, ∃ y : ℤ,  $a:num * x + $b:num * y = $c:num)
 
 end LinearDiophantineEquations
